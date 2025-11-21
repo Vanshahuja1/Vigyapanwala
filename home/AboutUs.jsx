@@ -72,64 +72,62 @@ export default function AboutUs() {
           </motion.div>
         </div>
 
-        {/* Stats Section */}
-<div className="mt-24 grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6">
-  {stats.map((stat, index) => (
-    <div key={index}>
+        {/* Stats Section - Single Row, No Scroll, Fits in Viewport */}
+        <div className="mt-24">
+          <div className="grid grid-cols-5 gap-3">
+            {stats.map((stat, index) => (
+              <div key={index}>
 
-      {/* Each Stat Block */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: "easeOut", delay: stat.delay }}
-        className="flex flex-col items-center"
-      >
+                {/* Each Stat Block */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: stat.delay }}
+                  className="flex flex-col items-center"
+                >
 
-        {/* Graph Bar Container */}
-        <div className="w-full h-64 mb-4 relative flex items-end ">
+                  {/* Graph Bar Container */}
+                  <div className="w-full h-40 md:h-64 mb-2 relative flex items-end ">
 
-          {/* Floating Percentage (moves upward with bar) */}
-          <motion.div
-            initial={{ bottom: 0, opacity: 0 }}
-            animate={isInView ? { bottom: `${stat.percentage}%`, opacity: 1 } : {}}
-            transition={{
-              duration: 1.2,
-              ease: "easeOut",
-              delay: stat.delay + 0.2
-            }}
-            className="absolute left-1/2 -translate-x-1/2 text-sm font-medium text-gray-900"
-          >
-            {stat.percentage}%
-          </motion.div>
+                    {/* Floating Percentage (moves upward with bar) */}
+                    <motion.div
+                      initial={{ bottom: 0, opacity: 0 }}
+                      animate={isInView ? { bottom: `${stat.percentage}%`, opacity: 1 } : {}}
+                      transition={{
+                        duration: 1.2,
+                        ease: "easeOut",
+                        delay: stat.delay + 0.2
+                      }}
+                      className="absolute left-1/2 -translate-x-1/2 text-xs md:text-sm font-medium text-gray-900"
+                    >
+                      {stat.percentage}%
+                    </motion.div>
 
-          {/* Growing Foreground Bar */}
-          <motion.div
-            initial={{ height: 0 }}
-            animate={isInView ? { height: `${stat.percentage}%` } : {}}
-            transition={{
-              duration: 1.2,
-              ease: "easeOut",
-              delay: stat.delay + 0.2
-            }}
-            className="w-full bg-gray-100  border-t-black border-t-3"
-          />
+                    {/* Growing Foreground Bar */}
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={isInView ? { height: `${stat.percentage}%` } : {}}
+                      transition={{
+                        duration: 1.2,
+                        ease: "easeOut",
+                        delay: stat.delay + 0.2
+                      }}
+                      className="w-full bg-gray-100  border-t-black border-t-3"
+                    />
+                  </div>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.5, delay: stat.delay + 0.5 }}
+                    className="text-xs md:text-sm text-center text-gray-600 mt-1"
+                  >
+                    {stat.label}
+                  </motion.p>
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* Label */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: stat.delay + 0.5 }}
-          className="text-sm text-center text-gray-600 mt-2"
-        >
-          {stat.label}
-        </motion.p>
-
-      </motion.div>
-    </div>
-  ))}
-</div>
-
       </div>
     </div>
   );

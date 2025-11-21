@@ -1,5 +1,6 @@
-import React from 'react';
-import { TrendingUp, Monitor, Truck, PersonStanding, UtensilsCrossed, Bot, PhoneCall, Puzzle, ChevronRight } from 'lucide-react';
+"use client";
+import React, { useState } from 'react';
+import { TrendingUp, Monitor, Truck, PersonStanding, UtensilsCrossed, Bot, PhoneCall, Puzzle, ChevronRight, ChevronDown } from 'lucide-react';
 
 const services = [
   {
@@ -45,15 +46,21 @@ const services = [
 ];
 
 export default function Services() {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
-    <div className="min-h-screen bg-white/90 p-8">
+    <div className="min-h-screen bg-white/90 p-4 md:p-8">
       <div className="max-w-8xl mx-auto">
-        <div className="bg-neutral-900 rounded-3xl p-8 md:p-12">
+        <div className="bg-neutral-900 rounded-3xl p-6 md:p-12">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 md:mb-10">
             <div>
-              <h2 className="text-4xl md:text-5xl font-light text-white mb-3 italic">Our Services</h2>
-              <p className="text-neutral-400 text-sm md:text-base max-w-md">
+              <h2 className="text-3xl md:text-5xl font-light text-white mb-2 md:mb-3 italic">Our Services</h2>
+              <p className="hidden md:block text-neutral-400 text-sm md:text-base max-w-md">
                 A Complete Advertising Arsenal — Explore our complete suite of advertising solutions, designed to give your brand a monopolistic advantage.
               </p>
             </div>
@@ -64,20 +71,45 @@ export default function Services() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {services.map((service, index) => {
               const IconComponent = service.icon;
+              const isExpanded = expandedIndex === index;
               return (
                 <div
                   key={index}
-                  className="bg-neutral-800 rounded-2xl p-6 hover:bg-neutral-700 transition-all duration-300 group cursor-pointer flex flex-col h-full min-h-64"
+                  className="bg-neutral-800 rounded-2xl p-4 md:p-6 hover:bg-neutral-700 transition-all duration-300 group cursor-pointer flex flex-col md:min-h-64"
+                  onClick={() => toggleExpand(index)}
                 >
-                  <div className="w-12 h-12 bg-neutral-700 rounded-xl flex items-center justify-center mb-4 group-hover:bg-neutral-600 transition-all duration-300">
-                    <IconComponent className="w-6 h-6 text-[#F5E6D3]" />
+                  {/* Header Row - Always Visible */}
+                  <div className="flex items-center justify-between md:block">
+                    <div className="flex items-center gap-3 md:block">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-neutral-700 rounded-xl flex items-center justify-center md:mb-4 group-hover:bg-neutral-600 transition-all duration-300">
+                        <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#F5E6D3]" />
+                      </div>
+                      <h3 className="text-white font-semibold text-base md:text-lg md:mb-2">{service.title}</h3>
+                    </div>
+                    {/* Mobile Expand Icon */}
+                    <div className="md:hidden">
+                      <ChevronDown 
+                        className={`w-5 h-5 text-[#F5E6D3] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+                      />
+                    </div>
                   </div>
-                  <h3 className="text-white font-semibold text-lg mb-2">{service.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed mb-4">{service.description}</p>
-                  <div className="mt-auto">
+
+                  {/* Mobile Expandable Content */}
+                  <div className={`md:hidden overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">{service.description}</p>
+                    <p className="text-amber-200 text-xs mb-3 cursor-pointer hover:underline">What's included in service?</p>
+                    <button className="flex items-center gap-2 px-4 py-2 border border-[#F5E6D3] text-[#F5E6D3] rounded-full text-xs hover:bg-[#F5E6D3] hover:text-black hover:scale-110 transition-all duration-300">
+                      Learn More
+                      <span><ChevronRight size={18} /></span>
+                    </button>
+                  </div>
+
+                  {/* Desktop Content - Always Visible */}
+                  <p className="hidden md:block text-neutral-400 text-sm leading-relaxed mb-4">{service.description}</p>
+                  <div className="hidden md:block mt-auto">
                     <p className="text-amber-200 text-xs mb-3 cursor-pointer hover:underline">What's included in service?</p>
                     <button className="flex items-center gap-2 px-4 py-2 border border-[#F5E6D3] text-[#F5E6D3] rounded-full text-xs hover:bg-[#F5E6D3] hover:text-black hover:scale-110 transition-all duration-300">
                       Learn More
