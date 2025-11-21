@@ -99,7 +99,7 @@ const Hero = () => {
     duration: 1,
     ease: "easeOut"
   }}
-  className="max-w-7xl mx-auto px-6 pb-16"
+  className="max-w-8xl w-[95%] mx-auto px-6 pb-16"
 >
   <div className="flex flex-col md:flex-row items-start gap-12">
 

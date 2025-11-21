@@ -10,7 +10,7 @@ import Navbar from "../home/Navbar";
 
 import Services from "../home/Services";
 
-import OurWork from "../home/OurWork";
+import WhyChooseUs from "../home/WhyChooseUs";
 
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
    <Hero/>
    <AboutUs/>
    <Services/>
-   <OurWork/>
+   <WhyChooseUs/>
    <Testimonials/>
    <Footer/>
    </>

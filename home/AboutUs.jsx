@@ -40,7 +40,7 @@ export default function AboutUs() {
 
   return (
     <div ref={ref} className="min-h-screen bg-white/90 px-8 py-16 md:px-16 lg:px-24">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Left side - Title and Description */}
           <motion.div
