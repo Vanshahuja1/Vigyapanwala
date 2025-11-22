@@ -16,7 +16,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div id="home"className="min-h-screen bg-white relative overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#F5E6D3] to-transparent"></div>

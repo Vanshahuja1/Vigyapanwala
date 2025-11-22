@@ -22,11 +22,8 @@ const Navbar = () => {
               <a href="#home" className="text-sm text-gray-700 hover:text-black transition-colors">
                 Home
               </a>
-              <a href="#our-work" className="text-sm text-gray-700 hover:text-black transition-colors">
-                Our Work
-              </a>
-              <a href="#project" className="text-sm text-gray-700 hover:text-black transition-colors">
-                Project
+              <a href="#whyUs" className="text-sm text-gray-700 hover:text-black transition-colors">
+                Why Us
               </a>
               <a href="#service" className="text-sm text-gray-700 hover:text-black transition-colors">
                 Service

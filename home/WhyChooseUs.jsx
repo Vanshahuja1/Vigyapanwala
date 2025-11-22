@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
     visible: { opacity: 1, y: 0 },
   };
   return (
-    <div className="min-h-screen bg-[#fafafa] p-4 md:p-10">
+    <div id="whyUs"className="min-h-screen bg-[#fafafa] p-4 md:p-10">
       <motion.div
         className="max-w-8xl mx-auto border border-gray-200 bg-white rounded-3xl p-10 shadow-sm"
         variants={container}

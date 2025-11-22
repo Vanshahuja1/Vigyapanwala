@@ -53,7 +53,7 @@ export default function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-white/90 p-4 md:p-8">
+    <div id="service" className="min-h-screen bg-white/90 p-4 md:p-8">
       <div className="max-w-8xl mx-auto">
         <div className="bg-neutral-900 rounded-3xl p-6 md:p-12">
           {/* Header */}
